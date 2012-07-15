@@ -26,23 +26,11 @@ function suppressDefault(e) {
     return true;
 }
 
+keyActions = [];
+
 function doInputAction(e) {
-    if (e.keyCode >= 32 && e.keyCode < 127) {
-        switch (e.keyCode) {
-            case '37':
-                alert('left');
-                break;
-            case '38':
-                alert('up');
-                break;
-            case '39':
-                alert('right');
-                break;
-            case '40':
-                alert('down');
-                break;
-        }
-    }
+    if (keyActions[e.keyCode])
+        keyActions[e.keyCode]();
 }
 
 function keyDown(e) {
