@@ -16,12 +16,34 @@
 					for (var j = 0; j < 32; j++)
 					{
 						document.getElementById('tile' + j + 'x' + i ).style.backgroundImage = 'url("art/tilemap.png")';
-						document.getElementById('tile' + j + 'x' + i).style.backgroundPosition = '16 0';
+						document.getElementById('tile' + j + 'x' + i).style.backgroundPosition = '-64px 0px';
 						document.getElementById('tile' + j + 'x' + i).style.backgroundRepeat = 'no-repeat';	
 					}
-				
 				}
+				setTimeout(function() { animateWater(1) }, 750);
 			}
+			
+			animateWater = function(frame) {
+				
+				if (frame == 1)
+				{
+					bgx = -64;
+				}
+				else
+				{
+					bgx = -80;
+				}
+					
+				for (var i = 0; i < 32; i++)
+				{
+					for (var j = 0; j < 32; j++)
+					{
+						document.getElementById('tile' + j + 'x' + i).style.backgroundPosition = bgx + 'px 0px';
+					}
+				}
+			frame *= -1;
+			setTimeout(function() { animateWater(frame) }, 750);
+		}
 		
 
 		</script>
