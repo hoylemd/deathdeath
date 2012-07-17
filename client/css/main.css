@@ -7,14 +7,13 @@ body
 div
 {
 	margin:auto;
-	width:576px;
+	width:512px;
 }
 .row {
 	clear:both;
 }
 span
 {
-	border:1px solid #202020;
 	width:16px;
 	height:16px;
 	float:left;

@@ -2,9 +2,29 @@
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="css/main.css"/>
-		<script type="text/javascript" src="input-keyboard.js"></script>
-		<script type="text/javascript" src="input-functions.js"></script>
+		<script type="text/javascript" src="scripts/input-keyboard.js"></script>
+		<script type="text/javascript" src="scripts/input-functions.js"></script>
 		<title>Death Death!</title>
+
+		<script>
+
+			window.onload = function()
+			{
+
+				for (var i = 0; i < 32; i++)
+				{
+					for (var j = 0; j < 32; j++)
+					{
+						document.getElementById('tile' + j + 'x' + i ).style.backgroundImage = 'url("art/tilemap.png")';
+						document.getElementById('tile' + j + 'x' + i).style.backgroundPosition = '16 0';
+						document.getElementById('tile' + j + 'x' + i).style.backgroundRepeat = 'no-repeat';	
+					}
+				
+				}
+			}
+		
+
+		</script>
 	</head>
 	<body>
 
