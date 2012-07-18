@@ -2,54 +2,11 @@
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="css/main.css"/>
-		<script type="text/javascript" src="scripts/input-keyboard.js"></script>
-		<script type="text/javascript" src="scripts/input-functions.js"></script>
 		<title>Death Death!</title>
 
-		<script>
 
-			window.onload = function()
-			{
-
-				for (var i = 0; i < 32; i++)
-				{
-					for (var j = 0; j < 32; j++)
-					{
-						document.getElementById('tile' + j + 'x' + i ).style.backgroundImage = 'url("art/tilemap.png")';
-						document.getElementById('tile' + j + 'x' + i).style.backgroundPosition = '-64px 0px';
-						document.getElementById('tile' + j + 'x' + i).style.backgroundRepeat = 'no-repeat';	
-					}
-				}
-				setTimeout(function() { animateWater(1) }, 750);
-			}
-			
-			animateWater = function(frame) {
-				
-				if (frame == 1)
-				{
-					bgx = -64;
-				}
-				else
-				{
-					bgx = -80;
-				}
-					
-				for (var i = 0; i < 32; i++)
-				{
-					for (var j = 0; j < 32; j++)
-					{
-						document.getElementById('tile' + j + 'x' + i).style.backgroundPosition = bgx + 'px 0px';
-					}
-				}
-			frame *= -1;
-			setTimeout(function() { animateWater(frame) }, 750);
-		}
-		
-
-		</script>
 	</head>
 	<body>
-
 		<!-- row 0 -->
 		<div class="row">
 			<span id="tile0x0"></span>
@@ -644,7 +601,7 @@
 			<span id="tile13x16"></span>
 			<span id="tile14x16"></span>
 			<span id="tile15x16"></span>
-			<span id="tile16x16"></span>
+			<span id="tile16x16">X</span>
 			<span id="tile17x16"></span>
 			<span id="tile18x16"></span>
 			<span id="tile19x16"></span>
@@ -1056,7 +1013,7 @@
 			<span id="tile29x27"></span>
 			<span id="tile30x27"></span>
 			<span id="tile31x27"></span>
-		</div>
+		<div>
 
 		<!-- row 28 -->
 		<div class="row">
@@ -1202,4 +1159,11 @@
 			<span id="tile31x31"></span>
 		</div>
 	</body>
+	Use the arrow keys to move around!
+	<!-- Client-side scripts -->	
+	<script type="text/javascript" src="scripts/main.js"></script>
+	<script type="text/javascript" src="scripts/input-keyboard.js">
+		</script>
+	<script type="text/javascript" src="scripts/input-functions.js">
+		</script>
 </html>

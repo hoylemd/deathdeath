@@ -1,16 +1,36 @@
+// This file holds the functions to be executed when a key is pressed
+//  Michael D. Hoyle
+
+// Control Key
+keyActions[17] = function()
+{	
+	alert("ctrl");
+}
+// Left Arrow Key
 keyActions[37] = function()
 {
-	alert("left");
+	// Move player and redraw sprites
+	dd.player.move(-1, 0);
+	dd.drawSprites();
 }
+// Up Arrow Key
 keyActions[38] = function()
 {
-	alert("up");
+	// Move player and redraw sprites
+	dd.player.move(0, -1);
+	dd.drawSprites();
 }
+// Right Arrow Key
 keyActions[39] = function()
 {
-	alert("right");
+	// Move player and redraw sprites
+	dd.player.move(1, 0);
+	dd.drawSprites();
 }
+// Down Arrow Key
 keyActions[40] = function()
 {
-	alert("down");
+	// Move player and redraw sprites
+	dd.player.move(0, 1);
+	dd.drawSprites();
 }
