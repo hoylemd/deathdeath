@@ -1,73 +1,34 @@
 // This file contains general scripting, including holding top-level variables
 
-// Load function
-// Sets up the water background
 window.onload = function()
 {
-	// loop over tiles
-	for (var i = 0; i < 32; i++)
+
+	for (var i=0; i< 32; i++)
 	{
+		dd.spriteGrid[i] = new Array(32);
 		for (var j = 0; j < 32; j++)
 		{
-			// construct the tile id
-			var id = 'tile' + j + 'x' + i;
-
-			// set up the tile style	
-			document.getElementById(id).style.backgroundImage =
-			   	'url("art/tilemap.png")';
-			document.getElementById(id).style.backgroundPosition = '-16px 0px';
-			document.getElementById(id).style.backgroundRepeat = 'no-repeat';	
+			dd.spriteGrid[i][j] = null;
 		}
 	}
 
-	// set up the timeout
-	// JOHN: can you explain how this line works? I'm not really sure what
-	// setTimeout does or where it's defined - Mike
-	//setTimeout(function() { animateWater(1) }, 750);
-}
+	dd.drawTilemaps();
 
-// Water Animation
-// Function to shift the tile frame every tick
-animateWater = function(frame)
-{
-	// shift to the appropriate frame
-	if (frame == 1)
-	{
-		bgx = -64;
-	}
-	else
-	{
-		bgx = -80;
-	}
+	// Update the player's position in the grid
+	dd.player.move(0, 0);
 	
-	// construct the style string
-	var bgp = bgx + 'px 0px';
+	// draw initial sprites
+	dd.drawSprites();
+	
 
-
-	// loop over tiles and set the frame
-	for (var i = 0; i < 32; i++)
-	{
-		for (var j = 0; j < 32; j++)
-		{
-			var id = 'tile' + j + 'x' + i; 
-			document.getElementById(id).style.backgroundPosition = bgp;
-		}
-	}
-
-	// set the other frame
-	frame *= -1;
-	setTimeout(function() { animateWater(frame) }, 750);
 }
+
 
 //dd will be our primary namespace
 dd = {};
-dd.spriteGrid = []
-for (var i=0; i< 32; i++)
-{
-	dd.spriteGrid[i] = new Array(32);
-	for (var j = 0; j < 32; j++)
-		dd.spriteGrid[i][j] = null;	
-}
+dd.spriteGrid = [];
+
+
 // use a closure to make the player object with a move function
 dd.player = function()
 {
@@ -84,7 +45,10 @@ dd.player = function()
 			// clear the old
 			// cell if it's valid
 			if (x > -1 && x < 32 && y > -1 && y < 32)
+			{
 				spriteGrid[x][y] = null;
+			}
+
 
 			// update the position
 			x += dx;
@@ -92,14 +56,13 @@ dd.player = function()
 
 			// write to the new cell
 			if (x > -1 && x < 32 && y > -1 && y < 32)
+			{
 				spriteGrid[x][y] = "<img src='art/minerman.png' />";
+			}
 		}
 	};
 
 }();
-
-// Update the player's position in the grid
-dd.player.move(0, 0);
 
 // Sprite update function
 dd.drawSprites = function()
@@ -113,8 +76,59 @@ dd.drawSprites = function()
 			var id = "tile" + x + "x" + y;
 			document.getElementById(id).innerHTML = dd.spriteGrid[x][y];
 		}
-	}	
+	}
 }
 
-// draw initial sprites
-dd.drawSprites();
+dd.drawTilemaps = function()
+{
+	for (var i = 0; i < 32; i++)
+	{
+		for (var j = 0; j < 32; j++)
+		{
+			// construct the tile id
+			var id = 'tile' + j + 'x' + i;
+
+			// set up the tile style
+			document.getElementById(id).style.backgroundImage =
+			'url("art/tilemap.png")';
+			document.getElementById(id).style.backgroundPosition = '-16px 0px';
+			document.getElementById(id).style.backgroundRepeat = 'no-repeat';
+		}
+	}
+
+}
+
+// Water Animation
+// Function to shift the tile frame every tick
+dd.animateWater = function(frame)
+{
+	// shift to the appropriate frame
+	if (frame == 1)
+	{
+		bgx = -64;
+	}
+	else
+	{
+		bgx = -80;
+	}
+
+	// construct the style string
+	var bgp = bgx + 'px 0px';
+
+
+	// loop over tiles and set the frame
+	for (var i = 0; i < 32; i++)
+	{
+		for (var j = 0; j < 32; j++)
+		{
+			var id = 'tile' + j + 'x' + i;
+			document.getElementById(id).style.backgroundPosition = bgp;
+		}
+	}
+
+	// set the other frame
+	frame *= -1;
+	setTimeout(function() {
+		animateWater(frame)
+	}, 750);
+}
