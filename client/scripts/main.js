@@ -15,7 +15,7 @@ window.onload = function()
 			// set up the tile style	
 			document.getElementById(id).style.backgroundImage =
 			   	'url("art/tilemap.png")';
-			document.getElementById(id).style.backgroundPosition = '-64px 0px';
+			document.getElementById(id).style.backgroundPosition = '-16px 0px';
 			document.getElementById(id).style.backgroundRepeat = 'no-repeat';	
 		}
 	}
@@ -23,7 +23,7 @@ window.onload = function()
 	// set up the timeout
 	// JOHN: can you explain how this line works? I'm not really sure what
 	// setTimeout does or where it's defined - Mike
-	setTimeout(function() { animateWater(1) }, 750);
+	//setTimeout(function() { animateWater(1) }, 750);
 }
 
 // Water Animation
@@ -92,7 +92,7 @@ dd.player = function()
 
 			// write to the new cell
 			if (x > -1 && x < 32 && y > -1 && y < 32)
-				spriteGrid[x][y] = "X";
+				spriteGrid[x][y] = "<img src='art/minerman.png' />";
 		}
 	};
 
