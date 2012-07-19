@@ -4,7 +4,7 @@
 // Control Key
 keyActions[17] = function()
 {	
-	alert("ctrl");
+	//alert("ctrl");
 }
 // Left Arrow Key
 keyActions[37] = function()
