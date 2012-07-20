@@ -11,26 +11,26 @@ keyActions[37] = function()
 {
 	// Move player and redraw sprites
 	dd.player.move(-1, 0);
-	dd.drawSprites();
+	dd.processTick();
 }
 // Up Arrow Key
 keyActions[38] = function()
 {
 	// Move player and redraw sprites
 	dd.player.move(0, -1);
-	dd.drawSprites();
+	dd.processTick();
 }
 // Right Arrow Key
 keyActions[39] = function()
 {
 	// Move player and redraw sprites
 	dd.player.move(1, 0);
-	dd.drawSprites();
+	dd.processTick();
 }
 // Down Arrow Key
 keyActions[40] = function()
 {
 	// Move player and redraw sprites
 	dd.player.move(0, 1);
-	dd.drawSprites();
+	dd.processTick();
 }

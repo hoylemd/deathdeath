@@ -25,3 +25,6 @@ span
 	height:16px;
 	float:left;
 }
+#hidden {
+	display:none;
+}
