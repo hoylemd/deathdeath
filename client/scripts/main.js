@@ -10,18 +10,21 @@ window.onload = function()
 	// Update the player's position in the grid
 	dd.player.move(0, 0);
 	
-	// draw initial sprites
-	dd.drawSprites();
-
+	dd.processTick();
 }
 
 
 //dd will be our primary namespace
 dd = {};
 dd.spriteGrid = [];
+dd.enemies = [];
 
 dd.levelLoad = function()
 {
+	var enemy = dd.enemy;
+	enemy.type = 'slime';
+	dd.enemies[0] = enemy;
+		
 	dd.spriteGridClear();
 }
 
@@ -74,11 +77,51 @@ dd.player = function()
 
 }();
 
+dd.enemy = function()
+{
+	// hidden variables
+	var x = 16;
+	var y = 16;
+	var type = '';
+	var spriteGrid = dd.spriteGrid;
+
+	// return the object
+	return {
+		// move method
+		move : function(dx, dy)
+		{
+			// clear the old
+			// cell if it's valid
+			if (x > -1 && x < 32 && y > -1 && y < 32)
+			{
+				spriteGrid[x][y] = null;
+			}
+
+
+			// update the position
+			x += dx;
+			y += dy;
+
+		},
+		draw : function()
+		{
+			// Move the player span into the correct tile span by use of DOM
+			document.getElementById("tile" + x + "x" + y).appendChild(document.getElementById('enemy1'));
+		}
+	};
+
+}();
+
 dd.processTick = function()
 {
 	
 	// Draw sprites on map
 	dd.player.draw();
+	
+	for (var key in dd.enemies)
+	{
+		dd.enemies[key].draw();
+	}
 }
 
 dd.drawTilemaps = function()

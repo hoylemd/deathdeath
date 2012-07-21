@@ -28,3 +28,17 @@ span
 #hidden {
 	display:none;
 }
+#player img {
+	position:relative;
+	top:0;
+	left:0;
+	height:16px;
+	width:16px;
+}
+.enemy-slime {
+	position:relative;
+	top:-16px;
+	left:-16px;
+	width:32px;
+	height:32px;
+}
