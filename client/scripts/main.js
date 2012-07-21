@@ -37,11 +37,7 @@ dd.levelLoadMap = function(levelName)
 	switch(levelName)
 	{
 		case 'level1':
-			
-			
-			
-			
-			
+			return dd.level01;		
 			break;
 	}
 }
@@ -148,14 +144,19 @@ dd.drawTilemaps = function()
 	{
 		for (var j = 0; j < 32; j++)
 		{
-			// construct the tile id
 			var id = 'tile' + j + 'x' + i;
+			var tileType = dd.levelMap[j][i];
+			var tile = dd.tiles[find_in_array(dd.tiles, 'id', tileType)];
 
-			// set up the tile style
-			document.getElementById(id).style.backgroundImage =
-			'url("art/tilemap.png")';
-			document.getElementById(id).style.backgroundPosition = '-16px 0px';
+			document.getElementById(id).style.backgroundImage = 'url("art/tilemap.png")';
+			document.getElementById(id).style.backgroundPosition = tile['posx'] + 'px ' + tile['posy'] + 'px';
 			document.getElementById(id).style.backgroundRepeat = 'no-repeat';
+
+		// set up the tile style
+		//document.getElementById(id).style.backgroundImage =
+		//'url("art/tilemap.png")';
+		//document.getElementById(id).style.backgroundPosition = '-16px 0px';
+		//document.getElementById(id).style.backgroundRepeat = 'no-repeat';
 		}
 	}
 
@@ -194,4 +195,13 @@ dd.animateWater = function(frame)
 	setTimeout(function() {
 		animateWater(frame)
 	}, 750);
+}
+
+function find_in_array(arr, name, value) {
+	var arrayLength = arr.length;
+	for (var i = 0; i < arrayLength; i++)
+	{
+		if (name in arr[i] && arr[i][name] == value) return i;
+	};
+	return false;
 }
