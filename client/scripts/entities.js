@@ -92,8 +92,16 @@ en.Character = function()
 			return maxHP;
 		}
 	
-	}
+	};
 	return ch;
+}
+
+// Sprite class prototype
+en.Sprite = function(){
+	var sp = {
+		__proto__: en.Entity()
+	};
+	return sp;
 }
 
 // player object
@@ -121,3 +129,12 @@ en.enemy = function()
 	return e;
 }();
 
+// fireball object
+en.fireball = function()
+{
+	var f = {
+		__proto__:en.Sprite(),
+		id:"fireball"
+	};
+	e.setCoords(-1, -1);
+}
