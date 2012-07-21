@@ -6,6 +6,8 @@ en.Entity = function()
 	// hidden variables
 	var x = 16;
 	var y = 16;
+	var hp = 5;
+	var maxHP;
 	var spriteGrid = dd.spriteGrid;
 	// return the object
 	return {
@@ -36,6 +38,31 @@ en.Entity = function()
 		{
 			x = newX;
 			y = newY;
+		},
+		setHP : function(value)
+		{
+			maxHP = value;
+			hp = maxHP;
+		},
+		damage : function(value)
+		{
+			hp -= value;
+		},
+		heal : function(value)
+		{
+			hp += value;
+			if (hp > maxHP)
+			{
+				hp = maxHP;
+			}
+		},
+		getHP : function()
+		{
+			return hp;
+		},
+		getMaxHP : function()
+		{
+			return maxHP;
 		}
 	};
 
@@ -49,6 +76,7 @@ en.player = function()
 		id:'player',
 	};
 	p.setCoords(16,16);
+	p.setHP(10);
 	return p;
 }();
 
@@ -61,6 +89,7 @@ en.enemy = function()
 		id:"enemy1"
 	};
 	e.setCoords(16,17);
+	e.setHP(2);
 	return e;
 }();
 
