@@ -6,8 +6,6 @@ en.Entity = function()
 	// hidden variables
 	var x = 16;
 	var y = 16;
-	var hp = 5;
-	var maxHP;
 	var spriteGrid = dd.spriteGrid;
 	// return the object
 	return {
@@ -57,6 +55,17 @@ en.Entity = function()
 			x = newX;
 			y = newY;
 		},
+	};
+
+};
+
+// Character class prototype
+en.Character = function()
+{
+	var hp = 5;
+	var maxHP;
+	var ch = {
+		__proto__:en.Entity(),
 		setHP : function(value)
 		{
 			maxHP = value;
@@ -82,15 +91,7 @@ en.Entity = function()
 		{
 			return maxHP;
 		}
-	};
-
-};
-
-// Character class prototype
-en.Character = function()
-{
-	var ch = {
-		__proto__:en.Entity(),
+	
 	}
 	return ch;
 }
