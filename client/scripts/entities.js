@@ -54,7 +54,7 @@ en.Entity = function()
 		{
 			x = newX;
 			y = newY;
-		},
+		}
 	};
 
 };
@@ -109,7 +109,7 @@ en.player = function()
 {
 	var p = {
 		__proto__:en.Character(),
-		id:'player',
+		id:'player'
 	};
 	p.setCoords(1,1);
 	p.setHP(10);
@@ -122,10 +122,43 @@ en.enemy = function()
 	var e = {
 		__proto__:en.Character(),
 		type:'',
-		id:"enemy1"
+		id:"enemy1",
+		hunt : function() {
+	
+			var distanceX = x - dd.player.getPos().x;
+			var distanceY = y - dd.player.getPos().y;
+
+			// if the enemy is more than 10 blocks away, they can't see the player
+			if (Math.abs(distanceX) < 10 && Math.abs(distanceY < 10))
+			{
+				if (Math.abs(distanceX) <= Math.abs(distanceY))
+				{
+					if (distanceX < 0)
+					{
+						move(1,0);
+					}
+					else
+					{
+						move(-1,0);
+					}
+				}
+				else
+				{
+					if (distanceY < 0)
+					{
+						move(1,0);
+					}
+					else
+					{
+						move(-1,0);
+					}
+				}
+			}
+		}
 	};
 	e.setCoords(1,2);
 	e.setHP(2);
+	
 	return e;
 }();
 

@@ -65,6 +65,7 @@ dd.processTick = function()
 	
 	for (var key in dd.enemies)
 	{
+		dd.enemies[key].hunt();
 		dd.enemies[key].draw();
 	}
 }
