@@ -8,8 +8,9 @@ en.Entity = function()
 	var y = 16;
 	var spriteGrid = dd.spriteGrid;
 	// return the object
+
 	return {
-		
+
 		id: '',
 		// move method
 		move : function(dx, dy)
@@ -20,13 +21,13 @@ en.Entity = function()
 
 				// xxx: the map data comes in with x and y swapped
 				var tileType = dd.levelMap[x+dx][y+dy];
-				
+
 				var tile = dd.tiles[find_in_array(dd.tiles, 'id', tileType)];
-				
+
 				if (!tile['solid'])
 				{
 					spriteGrid[x][y] = null;
-					
+
 					// update the position
 					x += dx;
 					y += dy;
@@ -60,10 +61,12 @@ en.Entity = function()
 		{
 			return x;
 		},
+
 		getY : function()
 		{
 			return y;
 		}
+
 	};
 
 };
@@ -100,7 +103,7 @@ en.Character = function()
 		{
 			return maxHP;
 		}
-	
+
 	};
 	return ch;
 }
@@ -128,49 +131,53 @@ en.player = function()
 // enemy object
 en.enemy = function()
 {
+
 	var e = {
 		__proto__:en.Character(),
 		type:'',
-		id:"enemy1",
-		hunt:function() {
-			if (dd.player)
-			{
-				var distanceX = x - dd.player.getX();
-				var distanceY = y - dd.player.getY();
+		id:"enemy1"
+	};
 
-				// if the enemy is more than 10 blocks away, they can't see the player
-				if (Math.abs(distanceX) < 10 && Math.abs(distanceY < 10))
+	e.hunt = function() {
+
+		if (en.player)
+		{
+
+			var distanceX = this.getX.call() - en.player.getX();
+			var distanceY = this.getY.call() - en.player.getY();
+
+			// if the enemy is more than 10 blocks away, they can't see the player
+			if (Math.abs(distanceX) < 10 && Math.abs(distanceY < 10))
+			{
+				if (Math.abs(distanceX) <= Math.abs(distanceY))
 				{
-					if (Math.abs(distanceX) <= Math.abs(distanceY))
+					if (distanceX < 0)
 					{
-						if (distanceX < 0)
-						{
-							move(1,0);
-						}
-						else
-						{
-							move(-1,0);
-						}
+						this.move(1,0);
 					}
 					else
 					{
-						if (distanceY < 0)
-						{
-							move(1,0);
-						}
-						else
-						{
-							move(-1,0);
-						}
+						this.move(-1,0);
+					}
+				}
+				else
+				{
+					if (distanceY < 0)
+					{
+						this.move(1,0);
+					}
+					else
+					{
+						this.move(-1,0);
 					}
 				}
 			}
 		}
-	};
-	
+	}
+
 	e.setCoords(21,2);
 	e.setHP(2);
-	
+
 	return e;
 }();
 
