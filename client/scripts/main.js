@@ -69,11 +69,16 @@ dd.Entity = function()
 		// move method
 		move : function(dx, dy)
 		{
-			// clear the old cell if it's valid
+
+			// check for collisions
 			if (x > -1 && x < 32 && y > -1 && y < 32)
 			{
-				var tileType = dd.levelMap[y+dy][x+dx];
+
+				// xxx the map data comes in with x and y swapped
+				var tileType = dd.levelMap[x+dx][y+dy];
+				
 				var tile = dd.tiles[find_in_array(dd.tiles, 'id', tileType)];
+				
 				if (!tile['solid'])
 				{
 					spriteGrid[x][y] = null;
@@ -83,9 +88,6 @@ dd.Entity = function()
 					y += dy;
 				}
 			}
-
-
-			
 
 		},
 		draw : function()

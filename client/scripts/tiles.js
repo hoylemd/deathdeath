@@ -11,4 +11,25 @@ dd.tiles = [{
 	"posx":-48,
 	"posy":0,
 	"solid":true
+},
+{
+	"id":2,
+	"name":"water",
+	"posx":-64,
+	"posy":0,
+	"solid":true
+},
+{
+	"id":3,
+	"name":"grass",
+	"posx":-32,
+	"posy":0,
+	"solid":false
+},
+{
+	"id":4,
+	"name":"dirt",
+	"posx":0,
+	"posy":0,
+	"solid":false
 }]
