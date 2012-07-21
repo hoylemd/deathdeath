@@ -55,6 +55,14 @@ en.Entity = function()
 			x = newX;
 			y = newY;
 		},
+		getX : function()
+		{
+			return x;
+		},
+		getY : function()
+		{
+			return y;
+		}
 	};
 
 };
