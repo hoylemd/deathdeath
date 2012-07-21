@@ -1,6 +1,7 @@
+var en = {};
 
 // use a closure to make the player object with a move function
-dd.Entity = function()
+en.Entity = function()
 {
 	// hidden variables
 	var x = 16;
@@ -48,10 +49,10 @@ dd.Entity = function()
 };
 
 // player object
-dd.player = function()
+en.player = function()
 {
 	var p = {
-		__proto__:dd.Entity(),
+		__proto__:en.Entity(),
 		id:'player',
 	};
 	p.setCoords(16,16);
@@ -59,14 +60,14 @@ dd.player = function()
 }();
 
 // enemy object
-dd.enemy = function()
+en.enemy = function()
 {
-	var en = {
-		__proto__:dd.Entity(),
+	var e = {
+		__proto__:en.Entity(),
 		type:'',
 		id:"enemy1"
 	};
-	en.setCoords(16,17);
-	return en;
+	e.setCoords(16,17);
+	return e;
 }();
 

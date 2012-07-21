@@ -8,7 +8,7 @@ window.onload = function()
 	dd.drawTilemaps();
 
 	// Update the player's position in the grid
-	dd.player.move(0, 0);
+	en.player.move(0, 0);
 	
 	dd.processTick();
 }
@@ -22,7 +22,7 @@ dd.levelMap = new Object();
 
 dd.levelLoad = function()
 {
-	var enemy = dd.enemy;
+	var enemy = en.enemy;
 	enemy.type = 'slime';
 	dd.enemies[0] = enemy;
 	
@@ -61,7 +61,7 @@ dd.processTick = function()
 {
 	
 	// Draw sprites on map
-	dd.player.draw();
+	en.player.draw();
 	
 	for (var key in dd.enemies)
 	{
@@ -84,11 +84,6 @@ dd.drawTilemaps = function()
 			document.getElementById(id).style.backgroundPosition = tile['posx'] + 'px ' + tile['posy'] + 'px';
 			document.getElementById(id).style.backgroundRepeat = 'no-repeat';
 
-			// set up the tile style
-			//document.getElementById(id).style.backgroundImage =
-			//'url("art/tilemap.png")';
-			//document.getElementById(id).style.backgroundPosition = '-16px 0px';
-			//document.getElementById(id).style.backgroundRepeat = 'no-repeat';
 		}
 	}
 
