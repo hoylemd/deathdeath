@@ -19,7 +19,7 @@ en.Entity = function()
 			if (x > -1 && x < 32 && y > -1 && y < 32)
 			{
 
-				// xxx the map data comes in with x and y swapped
+				// xxx: the map data comes in with x and y swapped
 				var tileType = dd.levelMap[x+dx][y+dy];
 				
 				var tile = dd.tiles[find_in_array(dd.tiles, 'id', tileType)];
@@ -86,11 +86,20 @@ en.Entity = function()
 
 };
 
+// Character class prototype
+en.Character = function()
+{
+	var ch = {
+		__proto__:en.Entity(),
+	}
+	return ch;
+}
+
 // player object
 en.player = function()
 {
 	var p = {
-		__proto__:en.Entity(),
+		__proto__:en.Character(),
 		id:'player',
 	};
 	p.setCoords(1,1);
@@ -102,7 +111,7 @@ en.player = function()
 en.enemy = function()
 {
 	var e = {
-		__proto__:en.Entity(),
+		__proto__:en.Character(),
 		type:'',
 		id:"enemy1"
 	};
