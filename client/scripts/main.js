@@ -43,75 +43,62 @@ dd.spriteGridClear = function() {
 }
 
 // use a closure to make the player object with a move function
+dd.Entity = function()
+{
+	// hidden variables
+	var x = 16;
+	var y = 16;
+	var spriteGrid = dd.spriteGrid;
+
+	// return the object
+	return {
+		id: '';,
+		// move method
+		move : function(dx, dy)
+		{
+			// clear the old
+			// cell if it's valid
+			if (x > -1 && x < 32 && y > -1 && y < 32)
+			{
+				spriteGrid[x][y] = null;
+			}
+
+
+			// update the position
+			x += dx;
+			y += dy;
+
+		},
+		draw : function()
+		{
+			// Move the Entity span into the correct tile span by use of DOM
+			document.getElementById("tile" + x + "x" + y)
+				.appendChild(document.getElementById(this.id));
+		}
+	};
+
+}();
+
+// player object
 dd.player = function()
 {
-	// hidden variables
-	var x = 16;
-	var y = 16;
-	var spriteGrid = dd.spriteGrid;
-
-	// return the object
 	return {
-		// move method
-		move : function(dx, dy)
-		{
-			// clear the old
-			// cell if it's valid
-			if (x > -1 && x < 32 && y > -1 && y < 32)
-			{
-				spriteGrid[x][y] = null;
-			}
+		__proto__:Entity,
+		id:'player'
+	}
+}
 
-
-			// update the position
-			x += dx;
-			y += dy;
-
-		},
-		draw : function()
-		{
-			// Move the player span into the correct tile span by use of DOM
-			document.getElementById("tile" + x + "x" + y).appendChild(document.getElementById('player'));
-		}
-	};
-
-}();
-
+// enemy object
 dd.enemy = function()
 {
-	// hidden variables
-	var x = 16;
-	var y = 16;
-	var type = '';
-	var spriteGrid = dd.spriteGrid;
-
-	// return the object
 	return {
-		// move method
-		move : function(dx, dy)
-		{
-			// clear the old
-			// cell if it's valid
-			if (x > -1 && x < 32 && y > -1 && y < 32)
-			{
-				spriteGrid[x][y] = null;
-			}
-
-
-			// update the position
-			x += dx;
-			y += dy;
-
-		},
-		draw : function()
-		{
-			// Move the player span into the correct tile span by use of DOM
-			document.getElementById("tile" + x + "x" + y).appendChild(document.getElementById('enemy1'));
-		}
-	};
-
+		__proto__:dd.Entity,
+		type:'',
+		id:"enemy1"
+	}
 }();
 
+// tick function
 dd.processTick = function()
 {
 	
@@ -124,6 +111,7 @@ dd.processTick = function()
 	}
 }
 
+// animate tiles function
 dd.drawTilemaps = function()
 {
 	for (var i = 0; i < 32; i++)
