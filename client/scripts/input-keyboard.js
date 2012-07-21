@@ -50,6 +50,6 @@ function keyPress(e) {
     if (!e) {
         e = event;
     }
-    doInputAction(e);
+    //doInputAction(e);
     return suppressDefault(e);
 }
