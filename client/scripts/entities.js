@@ -9,6 +9,7 @@ en.Entity = function()
 	var spriteGrid = dd.spriteGrid;
 	// return the object
 	return {
+		
 		id: '',
 		// move method
 		move : function(dx, dy)
@@ -54,6 +55,14 @@ en.Entity = function()
 		{
 			x = newX;
 			y = newY;
+		},
+		getX : function()
+		{
+			return x;
+		},
+		getY : function()
+		{
+			return y;
 		}
 	};
 
@@ -123,40 +132,43 @@ en.enemy = function()
 		__proto__:en.Character(),
 		type:'',
 		id:"enemy1",
-		hunt : function() {
-	
-			var distanceX = x - dd.player.getPos().x;
-			var distanceY = y - dd.player.getPos().y;
-
-			// if the enemy is more than 10 blocks away, they can't see the player
-			if (Math.abs(distanceX) < 10 && Math.abs(distanceY < 10))
+		hunt:function() {
+			if (dd.player)
 			{
-				if (Math.abs(distanceX) <= Math.abs(distanceY))
+				var distanceX = x - dd.player.getX();
+				var distanceY = y - dd.player.getY();
+
+				// if the enemy is more than 10 blocks away, they can't see the player
+				if (Math.abs(distanceX) < 10 && Math.abs(distanceY < 10))
 				{
-					if (distanceX < 0)
+					if (Math.abs(distanceX) <= Math.abs(distanceY))
 					{
-						move(1,0);
+						if (distanceX < 0)
+						{
+							move(1,0);
+						}
+						else
+						{
+							move(-1,0);
+						}
 					}
 					else
 					{
-						move(-1,0);
-					}
-				}
-				else
-				{
-					if (distanceY < 0)
-					{
-						move(1,0);
-					}
-					else
-					{
-						move(-1,0);
+						if (distanceY < 0)
+						{
+							move(1,0);
+						}
+						else
+						{
+							move(-1,0);
+						}
 					}
 				}
 			}
 		}
 	};
-	e.setCoords(1,2);
+	
+	e.setCoords(21,2);
 	e.setHP(2);
 	
 	return e;

@@ -8,4 +8,4 @@ var sp = {};
 sp.fireball = function(target)
 {
 	target.damage(1);
-}:
+}
