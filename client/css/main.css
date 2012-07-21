@@ -35,10 +35,10 @@ span
 	height:16px;
 	width:16px;
 }
-.enemy-slime {
+.enemy-slime img {
 	position:relative;
-	top:-16px;
-	left:-16px;
-	width:32px;
-	height:32px;
+	top:0;
+	left:0;
+	height:16px;
+	width:16px;
 }
