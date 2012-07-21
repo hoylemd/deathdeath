@@ -4,6 +4,7 @@
  * Example uses Google Spreadsheet CSV feed
  * csvToArray function I think I found on php.net
  * http://www.ravelrumba.com/blog/json-google-spreadsheets/
+ * Note: ensure that openssl module is installed in php
  */
 
 header('Content-type: application/json');
