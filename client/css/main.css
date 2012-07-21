@@ -28,17 +28,38 @@ span
 #hidden {
 	display:none;
 }
-#player img {
+
+
+#player , 
+.enemy-slime ,
+.terrain ,
+.sprite 
+{
 	position:relative;
 	top:0;
 	left:0;
 	height:16px;
 	width:16px;
+	float: left;
 }
-.enemy-slime img {
-	position:relative;
-	top:0;
-	left:0;
-	height:16px;
-	width:16px;
+
+.terrain 
+{
+	z-index:0;
+}
+.enemy-slime 
+{
+	z-index:1;
+}
+#player 
+{
+	z-index:2;
+}
+.sprite 
+{
+	z-index:3;
+}
+.selector 
+{
+	z-index:4;
 }

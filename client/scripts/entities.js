@@ -30,9 +30,20 @@ en.Entity = function()
 		},
 		draw : function()
 		{
+			// get the tile
+			var tile = document.getElementById("tile" + x + "x" + y);
+
+			// calculate the offset
+			var children = tile.childNodes.length - 1;
+			children = children < 0 ? 0 : children;
+			var offset = children * -16;
+
+			// get this entity's span
+			var span = document.getElementById(this.id);
+			span.style.top = offset + "px";
+
 			// Move the Entity span into the correct tile span by use of DOM
-			document.getElementById("tile" + x + "x" + y)
-				.appendChild(document.getElementById(this.id));
+			tile.appendChild(span);
 		},
 		setCoords : function(newX, newY)
 		{
@@ -75,7 +86,7 @@ en.player = function()
 		__proto__:en.Entity(),
 		id:'player',
 	};
-	p.setCoords(16,16);
+	p.setCoords(1,1);
 	p.setHP(10);
 	return p;
 }();
@@ -88,7 +99,7 @@ en.enemy = function()
 		type:'',
 		id:"enemy1"
 	};
-	e.setCoords(16,17);
+	e.setCoords(1,2);
 	e.setHP(2);
 	return e;
 }();
