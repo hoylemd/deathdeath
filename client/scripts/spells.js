@@ -7,5 +7,5 @@ var sp = {};
 // Level: 1
 sp.fireball = function(target)
 {
-	alert("fireball");
-}
+	target.damage(1);
+}:
