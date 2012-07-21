@@ -34,3 +34,10 @@ keyActions[40] = function()
 	dd.player.move(0, 1);
 	dd.processTick();
 }
+// 1 key
+keyActions[49] = function()
+{
+	alert("1");
+	sp.fireball(dd.enemy);
+	dd.processTick();
+}
