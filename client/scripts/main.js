@@ -84,11 +84,6 @@ dd.drawTilemaps = function()
 			document.getElementById(id).style.backgroundPosition = tile['posx'] + 'px ' + tile['posy'] + 'px';
 			document.getElementById(id).style.backgroundRepeat = 'no-repeat';
 
-		// set up the tile style
-		// document.getElementById(id).style.backgroundImage =
-		//'url("art/tilemap.png")';
-		//document.getElementById(id).style.backgroundPosition = '-16px 0px';
-		//document.getElementById(id).style.backgroundRepeat = 'no-repeat';
 		}
 	}
 

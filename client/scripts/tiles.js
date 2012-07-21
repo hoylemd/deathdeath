@@ -1,12 +1,35 @@
 dd.tiles = [{
-		"id":0,
-		"name":"sand",
-		"posx":-16,
-		"posy":0
+	"id":0,
+	"name":"sand",
+	"posx":-16,
+	"posy":0,
+	"solid":false
 },
 {
-		"id":1,
-		"name":"rock",
-		"posx":-48,
-		"posy":0
+	"id":1,
+	"name":"rock",
+	"posx":-48,
+	"posy":0,
+	"solid":true
+},
+{
+	"id":2,
+	"name":"water",
+	"posx":-64,
+	"posy":0,
+	"solid":true
+},
+{
+	"id":3,
+	"name":"grass",
+	"posx":-32,
+	"posy":0,
+	"solid":false
+},
+{
+	"id":4,
+	"name":"dirt",
+	"posx":0,
+	"posy":0,
+	"solid":false
 }]
