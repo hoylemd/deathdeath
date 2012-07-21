@@ -69,24 +69,30 @@ dd.Entity = function()
 		// move method
 		move : function(dx, dy)
 		{
-			// clear the old
-			// cell if it's valid
+			// clear the old cell if it's valid
 			if (x > -1 && x < 32 && y > -1 && y < 32)
 			{
-				spriteGrid[x][y] = null;
+				var tileType = dd.levelMap[y+dy][x+dx];
+				var tile = dd.tiles[find_in_array(dd.tiles, 'id', tileType)];
+				if (!tile['solid'])
+				{
+					spriteGrid[x][y] = null;
+					
+					// update the position
+					x += dx;
+					y += dy;
+				}
 			}
 
 
-			// update the position
-			x += dx;
-			y += dy;
+			
 
 		},
 		draw : function()
 		{
 			// Move the Entity span into the correct tile span by use of DOM
 			document.getElementById("tile" + x + "x" + y)
-				.appendChild(document.getElementById(this.id));
+			.appendChild(document.getElementById(this.id));
 		},
 		setCoords : function(newX, newY)
 		{
@@ -148,11 +154,11 @@ dd.drawTilemaps = function()
 			document.getElementById(id).style.backgroundPosition = tile['posx'] + 'px ' + tile['posy'] + 'px';
 			document.getElementById(id).style.backgroundRepeat = 'no-repeat';
 
-		// set up the tile style
-		//document.getElementById(id).style.backgroundImage =
-		//'url("art/tilemap.png")';
-		//document.getElementById(id).style.backgroundPosition = '-16px 0px';
-		//document.getElementById(id).style.backgroundRepeat = 'no-repeat';
+			// set up the tile style
+			//document.getElementById(id).style.backgroundImage =
+			//'url("art/tilemap.png")';
+			//document.getElementById(id).style.backgroundPosition = '-16px 0px';
+			//document.getElementById(id).style.backgroundRepeat = 'no-repeat';
 		}
 	}
 
