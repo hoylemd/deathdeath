@@ -145,9 +145,9 @@ en.enemy = function()
 
 			var distanceX = this.getX.call() - en.player.getX();
 			var distanceY = this.getY.call() - en.player.getY();
-
+console.log(distanceX + ' ' + distanceY);
 			// if the enemy is more than 10 blocks away, they can't see the player
-			if (Math.abs(distanceX) < 10 && Math.abs(distanceY < 10))
+			if (Math.abs(distanceX) < 10 && Math.abs(distanceY) < 10)
 			{
 				if (Math.abs(distanceX) <= Math.abs(distanceY))
 				{
