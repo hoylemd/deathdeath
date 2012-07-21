@@ -18,14 +18,32 @@ window.onload = function()
 dd = {};
 dd.spriteGrid = [];
 dd.enemies = [];
+dd.levelMap = new Object();
 
 dd.levelLoad = function()
 {
 	var enemy = dd.enemy;
 	enemy.type = 'slime';
 	dd.enemies[0] = enemy;
+	
+	// prep level json
+	dd.levelMap = dd.levelLoadMap('level1');
 		
 	dd.spriteGridClear();
+}
+
+dd.levelLoadMap = function(levelName)
+{
+	switch(levelName)
+	{
+		case 'level1':
+			
+			
+			
+			
+			
+			break;
+	}
 }
 
 
